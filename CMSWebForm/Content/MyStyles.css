@@ -1,0 +1,46 @@
+﻿.addrow{
+    padding-top:15px;
+}
+.labels {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+}
+.gridview {
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: 400;
+    color: #FFF;
+}
+.pagging-buttons{
+    width:15px;
+    height:11px;
+    margin-left:10px;
+    float:right;
+}
+.gridviewHeader, .gridviewRows {
+    height: 30px !important;
+    font-size: 13px !important;
+    font-weight: 400 !important;
+    font-family: Aharoni !important;
+    text-align: left !important;
+}
+
+.gridviewHeader {
+    background-color: #509f7e !important;
+    color: black !important;
+}
+
+.gridviewRows {
+    border: 0 !important;
+    border-bottom: 1px solid #509f7e !important;
+    background: #fff !important;
+    color: #000 !important;
+}
+.pagging-pageNumber, pagging-pageButtons{
+    display:inline-block;
+    float:right;
+}
+.pagging-pageSize{
+    margin-top:25px;
+}
