@@ -36,7 +36,7 @@
             </div>
         </div>
     </div>
-    <asp:GridView ID="GVProducts" SkinID="SuiteSkin"  runat="server" AutoGenerateColumns=False meta:resourcekey="GVProductsResource1" OnPageIndexChanging="GVProducts_PageIndexChanging" AllowPaging="True" >
+    <asp:GridView ID="GVProducts" SkinID="SuiteSkin"  runat="server" AutoGenerateColumns=False meta:resourcekey="GVProductsResource1" OnPageIndexChanging="GVProducts_PageIndexChanging" PageSize="5" AllowPaging="True">
         <Columns>
             <asp:TemplateField HeaderText="Name">
                 <ItemTemplate>
@@ -72,12 +72,13 @@
                 <ItemTemplate>
                     <asp:Label ID="Label5" Text='<%#Eval("ProductType") %>' runat="server"></asp:Label>
                 </ItemTemplate>
-                <ItemStyle Width="20%" />
-                <HeaderStyle Width="20%" />
+                <ItemStyle Width="15%" />
+                <HeaderStyle Width="15%" />
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Photo">
                 <ItemTemplate>
-                    <asp:Image ID="grdImg1" src='<%#Eval("Image") %>' runat="server"></asp:Image>
+                    
+                     <asp:Image ID="grdImg1" ImageUrl='<%#"data:Image/png;base64,"+Convert.ToBase64String((byte[])Eval("Photo"))%>' runat="server" Width="115px" Height="65px"></asp:Image>
                     
                 </ItemTemplate>
                 <ItemStyle Width="40%" />
@@ -101,9 +102,8 @@
                             <div class="pagging-pageButtons">
                                 <asp:ImageButton ID="imgBtnFirst" runat="server" ImageUrl="~/images/layout/First.png" CssClass="pagging-buttons" OnClick="imgBtnFirst_OnClick" ToolTip="First" meta:resourcekey="imgBtnFirstResource1" />
 
-                                <asp:ImageButton ID="imgBtnPrevious" runat="server" ImageUrl="~/images/layout/Previous.png" CssClass="pagging-buttons" OnClick="imgBtnPrevious_OnClick" ToolTip="Previous" meta:resourcekey="imgBtnPreviousResource1" />
-
                                 <asp:ImageButton ID="imgBtnNext" runat="server" ImageUrl="~/images/layout/Next.png" CssClass="pagging-buttons" OnClick="imgBtnNext_OnClick" ToolTip="Next" meta:resourcekey="imgBtnNextResource1" />
+                                <asp:ImageButton ID="imgBtnPrevious" runat="server" ImageUrl="~/images/layout/Previous.png" CssClass="pagging-buttons" OnClick="imgBtnPrevious_OnClick" ToolTip="Previous" meta:resourcekey="imgBtnPreviousResource1" />
 
                                 <asp:ImageButton ID="imgBtnLast" runat="server" ImageUrl="~/images/layout/Last.png" CssClass="pagging-buttons" OnClick="imgBtnLast_OnClick" ToolTip="Last" meta:resourcekey="imgBtnLastResource1" />
                             </div>

@@ -16,23 +16,25 @@ namespace CMSWebForm.Admin
         clsCategory _category = new clsCategory();
         protected void Page_Load(object sender, EventArgs e)
         {
+            imgBtnFirst.Enabled = false;
+            imgBtnPrevious.Enabled = false;
             if (!IsPostBack)
             {
                 BindCategories();
                 BindProductTypes();
                 FillGridView();
             }
-            
+
         }
         public void FillGridView()
         {
-            
+
             this.GVProducts.DataSource = _product.GetProducts();
             this.GVProducts.DataBind();
         }
         public void BindCategories()
         {
-            
+
             try
             {
                 List<Category> catlist = _category.GetCategories();
@@ -41,11 +43,11 @@ namespace CMSWebForm.Admin
                 this.ddlCategory.DataTextField = "CatName";
                 this.ddlCategory.DataBind();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 throw ex;
             }
-            
+
         }
         public void BindProductTypes()
         {
@@ -82,14 +84,14 @@ namespace CMSWebForm.Admin
                     //set the binary data  
                     img.InputStream.Read(imgbyte, 0, length);
                     string filename = Path.GetFileName(imgUploader.PostedFile.FileName);
-                    
+
                     //be.Eimage=txtimage.  
                     product.PhotoName = filename;
                     product.Photo = imgbyte;
-                    
-                   
-                    
-                 }
+
+
+
+                }
                 clsProduct _product = new clsProduct();
                 _product.AddProduct(product);
             }
@@ -104,8 +106,8 @@ namespace CMSWebForm.Admin
         {
             try
             {
-                
-                
+
+
             }
             catch (Exception ex)
             {
@@ -119,6 +121,7 @@ namespace CMSWebForm.Admin
             try
             {
                 GVProducts.PageSize = Convert.ToInt32(ddlPageSize.SelectedValue);
+                FillGridView();
 
             }
             catch (Exception ex)
@@ -132,44 +135,79 @@ namespace CMSWebForm.Admin
             try
             {
 
-                
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
-
-        protected void imgBtnPrevious_OnClick(object sender, ImageClickEventArgs e)
-        {
-            try
-            {
-       
-        
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-
         protected void imgBtnNext_OnClick(object sender, ImageClickEventArgs e)
         {
             try
             {
-               
+                int i = GVProducts.PageIndex + 1;
+                if (i <= GVProducts.PageCount)
+                {
+                    GVProducts.PageIndex = i;
+                    FillGridView();
+                    imgBtnLast.Enabled = true;
+                    imgBtnPrevious.Enabled = true;
+                    imgBtnFirst.Enabled = true;
+                }
+
+                if (GVProducts.PageCount - 1 == GVProducts.PageIndex)
+                {
+                    imgBtnNext.Enabled = false;
+                    imgBtnLast.Enabled = false;
+                }
             }
             catch (Exception ex)
             {
                 throw ex;
             }
         }
+        protected void imgBtnPrevious_OnClick(object sender, ImageClickEventArgs e)
+        {
+            try
+            {
+                int i = GVProducts.PageCount;
+                if (GVProducts.PageIndex > 0)
+                {
+
+                    GVProducts.PageIndex = GVProducts.PageIndex - 1;
+                    FillGridView();
+                    imgBtnLast.Enabled = true;
+                    imgBtnPrevious.Enabled = true;
+                }
+
+                if (GVProducts.PageIndex == 0)
+                {
+                    imgBtnFirst.Enabled = false;
+                }
+                if (GVProducts.PageCount - 1 == GVProducts.PageIndex + 1)
+                {
+                    imgBtnNext.Enabled = true;
+                }
+                if (GVProducts.PageIndex == 0)
+                {
+                    imgBtnPrevious.Enabled = false;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
 
         protected void imgBtnLast_OnClick(object sender, ImageClickEventArgs e)
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
@@ -181,7 +219,7 @@ namespace CMSWebForm.Admin
         {
             try
             {
-                
+
             }
             catch (Exception ex)
             {
@@ -193,7 +231,7 @@ namespace CMSWebForm.Admin
         {
             try
             {
-                
+
 
             }
             catch (Exception ex)
@@ -206,7 +244,7 @@ namespace CMSWebForm.Admin
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
@@ -218,7 +256,7 @@ namespace CMSWebForm.Admin
         {
             try
             {
-               
+
             }
             catch (Exception ex)
             {
@@ -233,6 +271,6 @@ namespace CMSWebForm.Admin
             FillGridView();
         }
 
-        
+
     }
 }

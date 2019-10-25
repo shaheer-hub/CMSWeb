@@ -175,15 +175,6 @@ namespace CMSWebForm.Admin {
         protected global::System.Web.UI.WebControls.ImageButton imgBtnFirst;
         
         /// <summary>
-        /// imgBtnPrevious control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton imgBtnPrevious;
-        
-        /// <summary>
         /// imgBtnNext control.
         /// </summary>
         /// <remarks>
@@ -191,6 +182,15 @@ namespace CMSWebForm.Admin {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ImageButton imgBtnNext;
+        
+        /// <summary>
+        /// imgBtnPrevious control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ImageButton imgBtnPrevious;
         
         /// <summary>
         /// imgBtnLast control.
